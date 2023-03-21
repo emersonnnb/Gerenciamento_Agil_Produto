@@ -1,15 +1,14 @@
-<div class="login">
+<div class="login centralizar">
   <form [formGroup]="logiIn" class="">
-    <div>
-
+    <div class="centralizar">
+      <span class="material-symbols-outlined">
+        person
+      </span>
     </div>
-    <span class="material-symbols-outlined">
-      person
-    </span>
     <div>
       <mat-form-field class="w-100" appearance="fill">
         <mat-label>Insira seu E-mail</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="email" required>
+        <input matInput placeholder="example@example.com" formControlName="email" required>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
