@@ -1,14 +1,14 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
 import { ProdutoModel } from 'src/app/core/model/produto.model';
 
 import { AddEditProdutoComponent } from './add-edit-produto/add-edit-produto.component';
 import { ProdutoService } from './services/produto.service';
+
 
 @Component({
   selector: 'app-produto',
