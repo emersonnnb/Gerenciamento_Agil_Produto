@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { HttpParams } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
+import { ProdutoModel } from 'src/app/core/model/produto.model';
+
+import { AddEditProdutoComponent } from './add-edit-produto/add-edit-produto.component';
+import { ProdutoService } from './services/produto.service';
 
 @Component({
   selector: 'app-produto',
@@ -8,25 +16,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./produto.component.scss']
 })
 export class ProdutoComponent implements OnInit {
-  data = [
-    { id: 1, name: "Mamão", category: "Frutas", price: 2.50, situation: "Ativo" },
-    { id: 2, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 3, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 4, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 5, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 6, name: "Mamão", category: "Frutas", price: 2.50, situation: "Ativo" },
-    { id: 7, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 8, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 9, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 10, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 11, name: "Mamão", category: "Frutas", price: 2.50, situation: "Ativo" },
-    { id: 12, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 13, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 14, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-    { id: 15, name: "Manga", category: "Frutas", price: 3.99, situation: "Inativo" },
-  ];
 
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  dataSourceProduto!: MatTableDataSource<ProdutoModel>
 
   public displayedColumns: string[] = [
     "id",
@@ -37,25 +28,57 @@ export class ProdutoComponent implements OnInit {
     "actions"
   ];
 
+  pageOrder = 'ASC';
+  pageSort = 'c.description';
   pageEvent: PageEvent = {
     pageIndex: 0,
     pageSize: 5,
     length: 0,
   };
+  searchString!: string;
+  searchFieldString!: string | null;
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() { }
+  constructor(
+    private api: ProdutoService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<ColumnsHeader>(this.data);
+    this.getProduto(this.pageEvent);
   }
 
+  getProduto(event: PageEvent) {
+    this.pageEvent = event;
+    let params = new HttpParams()
+    this.api.getAllProduto(params).subscribe({
+      next: (res): void => {
+        this.pageEvent.length = res.totalRecords;
+        this.dataSourceProduto = new MatTableDataSource(res);
+        this.dataSourceProduto.sort = this.sort;
+      },
+      error: (error) => {
+        //this.dialogService.alert(error.error?.message);
+      }
+    });
+  };
+
+
+  openDialogProduto(id: number | null, mode: string, data?: any) {
+    console.log(data);
+    return this.dialog.open(AddEditProdutoComponent, {
+      minWidth: "80%",
+      height: "80vh",
+      disableClose: true,
+      data: { id, mode, data }
+    }).afterClosed().subscribe(() => {
+      this.getProduto(this.pageEvent)
+    })
+  };
 }
 
-export interface ColumnsHeader {
-  id: number
-  name: string;
-  category: string;
-  price: number;
-  situation: string;
-}
+
+
+

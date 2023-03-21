@@ -1,0 +1,126 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "name": "Mamão",
+      "category": "Frutas",
+      "price": 2.50,
+      "situation": "Ativo"
+    },
+    {
+      "id": 2,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 3,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 4,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 5,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 6,
+      "name": "Mamão",
+      "category": "Frutas",
+      "price": 2.50,
+      "situation": "Ativo"
+    },
+    {
+      "id": 7,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 8,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 9,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 10,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 11,
+      "name": "Mamão",
+      "category": "Frutas",
+      "price": 2.50,
+      "situation": "Ativo"
+    },
+    {
+      "id": 12,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 13,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 14,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 15,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    },
+    {
+      "id": 16,
+      "name": "Manga",
+      "category": "Frutas",
+      "price": 3.99,
+      "situation": "Inativo"
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Hambúrgueres"
+    },
+    {
+      "id": 2,
+      "nome": "Refrigerantes"
+    }
+  ]
+}
