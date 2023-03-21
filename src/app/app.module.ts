@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
@@ -23,8 +24,6 @@ import { AddEditProdutoComponent } from './features/produto/add-edit-produto/add
 import { ProdutoComponent } from './features/produto/produto.component';
 import { UserComponent } from './features/user/user.component';
 import { VendaComponent } from './features/venda/venda.component';
-
-
 
 @NgModule({
   declarations: [
@@ -52,7 +51,8 @@ import { VendaComponent } from './features/venda/venda.component';
     MatTooltipModule,
     MatTableModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
 
   ],
   providers: [],
