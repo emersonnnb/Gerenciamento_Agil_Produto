@@ -2,12 +2,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,8 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './features/footer/footer.component';
-import { HeaderComponent } from './features/header/header.component';
+import { FooterComponent } from './features/components/footer/footer.component';
+import { HeaderComponent } from './features/components/header/header.component';
+import { MensagemComponent } from './features/components/mensagem/mensagem.component';
 import { LoginComponent } from './features/login/login.component';
 import { AddEditProdutoComponent } from './features/produto/add-edit-produto/add-edit-produto.component';
 import { ProdutoComponent } from './features/produto/produto.component';
@@ -34,7 +37,8 @@ import { VendaComponent } from './features/venda/venda.component';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    AddEditProdutoComponent
+    AddEditProdutoComponent,
+    MensagemComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +56,9 @@ import { VendaComponent } from './features/venda/venda.component';
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    MatInputModule
-
+    MatInputModule,
+    MatDatepickerModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,4 @@
+import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,6 +28,7 @@ export class ProdutoComponent implements OnInit {
     "price",
     "actions"
   ];
+  formModeEnum = FormModeEnum;
 
   pageOrder = 'ASC';
   pageSort = 'c.description';
@@ -67,11 +69,10 @@ export class ProdutoComponent implements OnInit {
 
 
   openDialogProduto(id: number | null, mode: string, data?: any) {
-    console.log(data);
     return this.dialog.open(AddEditProdutoComponent, {
-      minWidth: "80%",
-      height: "80vh",
-      disableClose: true,
+      minWidth: "90%",
+      height: "90vh",
+      //disableClose: true,
       data: { id, mode, data }
     }).afterClosed().subscribe(() => {
       this.getProduto(this.pageEvent)

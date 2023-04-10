@@ -9,7 +9,8 @@
       <mat-form-field class="w-100" appearance="fill">
         <mat-label>Insira seu E-mail</mat-label>
         <input matInput placeholder="example@example.com" formControlName="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        <!-- <app-mensagem *ngIf="email.errors" mensagem=" O campo deve ser preenchido"></app-mensagem> -->
       </mat-form-field>
     </div>
     <div>

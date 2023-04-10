@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
 import { ProdutoService } from '../services/produto.service';
@@ -17,6 +17,7 @@ export class AddEditProdutoComponent implements OnInit {
   formModeEnum = FormModeEnum;
   mode!: FormModeEnum;
   id!: number;
+  selected = 'option';
 
   constructor(
     public dialogRef: MatDialogRef<AddEditProdutoComponent>,
@@ -27,33 +28,35 @@ export class AddEditProdutoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
-
+    console.log(this.data)
     this.mode = this.data.mode;
     this.id = this.data.id;
     this.data = this.data.data;
 
     this.formProduto = this.formBuilder.group({
       id: [null],
-      name: [null, Validators.required],
-      situation: [true, Validators.required],
+      name: [null],
+      situation: [null],
+      price: [null],
+      uniMedida: [null],
+      category: [null],
     });
 
     switch (this.mode) {
       case this.formModeEnum.Incluir:
-        this.formProduto.enable();
+        //this.formProduto.enable();
         //this.formProduto.controls.situation?.disable();
         break;
 
       case this.formModeEnum.Visualizar:
-        this.formProduto.disable();
+        //this.formProduto.disable();
         //this.formProduto.controls.situation?.disable();
         this.fillForm(this.data);
         break;
 
       case this.formModeEnum.Editar:
-        this.formProduto.enable();
-        this.fillForm(this.data);
+        //this.formProduto.enable();
+        //this.fillForm(this.data);
         break;
 
       default:
