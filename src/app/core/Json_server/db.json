@@ -2,115 +2,31 @@
   "produtos": [
     {
       "id": 1,
-      "name": "Mamão",
+      "descricaoResumida": "Mamão",
+      "descricaoCompleta": "Mamão Papaia",
       "category": "Frutas",
-      "price": 2.50,
-      "situation": "Ativo"
+      "group": "Mamões",
+      "subgroup": "Papaia",
+      "situation": "true",
+      "salePrice": 2.50,
+      "costPrice": 1.99,
+      "margin": 15,
+      "unitOfMeasurement": "UN",
+      "eanCode": 789456123
     },
     {
       "id": 2,
-      "name": "Manga",
+      "descricaoResumida": "Manga",
+      "descricaoCompleta": "Mamão Espada",
       "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 3,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 4,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 5,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 6,
-      "name": "Mamão",
-      "category": "Frutas",
-      "price": 2.50,
-      "situation": "Ativo"
-    },
-    {
-      "id": 7,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 8,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 9,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 10,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 11,
-      "name": "Mamão",
-      "category": "Frutas",
-      "price": 2.50,
-      "situation": "Ativo"
-    },
-    {
-      "id": 12,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 13,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 14,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 15,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
-    },
-    {
-      "id": 16,
-      "name": "Manga",
-      "category": "Frutas",
-      "price": 3.99,
-      "situation": "Inativo"
+      "group": "Mangas",
+      "subgroup": "Espada",
+      "situation": "false",
+      "salePrice": 4.50,
+      "costPrice": 2.99,
+      "margin": 25,
+      "unitOfMeasurement": "kg",
+      "eanCode": 789321654
     }
   ],
   "categorias": [

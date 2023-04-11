@@ -27,6 +27,8 @@ import { AddEditProdutoComponent } from './features/produto/add-edit-produto/add
 import { ProdutoComponent } from './features/produto/produto.component';
 import { UserComponent } from './features/user/user.component';
 import { VendaComponent } from './features/venda/venda.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { VendaComponent } from './features/venda/venda.component';
     MatDialogModule,
     MatInputModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent],

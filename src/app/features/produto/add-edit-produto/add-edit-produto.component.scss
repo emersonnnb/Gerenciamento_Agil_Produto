@@ -53,4 +53,8 @@
 
 .link {
   cursor: pointer;
+  border-bottom: #ff0303 solid;
+}
+.link:hover {
+  border-bottom: #0820fa solid;
 }

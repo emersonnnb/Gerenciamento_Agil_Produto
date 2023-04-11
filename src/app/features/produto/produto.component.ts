@@ -25,7 +25,7 @@ export class ProdutoComponent implements OnInit {
     "name",
     "category",
     "situation",
-    "price",
+    "salePrice",
     "actions"
   ];
   formModeEnum = FormModeEnum;
@@ -68,16 +68,21 @@ export class ProdutoComponent implements OnInit {
   };
 
 
-  openDialogProduto(id: number | null, mode: string, data?: any) {
+  openDialogProduto(id: number | null, mode: string) {
     return this.dialog.open(AddEditProdutoComponent, {
       minWidth: "90%",
       height: "90vh",
-      //disableClose: true,
-      data: { id, mode, data }
+      data: { id, mode }
     }).afterClosed().subscribe(() => {
       this.getProduto(this.pageEvent)
     })
   };
+
+  situationTextMap: Map<string, string> = new Map([
+    ["false", "Inativo"],
+    ["true", "Ativo"],
+  ]);
+
 }
 
 

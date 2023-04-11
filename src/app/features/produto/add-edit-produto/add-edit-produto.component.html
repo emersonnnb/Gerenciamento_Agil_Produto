@@ -2,110 +2,112 @@
   <!-- Titulo da page -->
   <div class="row">
     <div class="title">
-      <h3>Editar Produto</h3>
+      <h3 *ngIf="mode === 'Editar'">Editar</h3>
+      <h3 *ngIf="mode === 'Visualizar'">Visualizar</h3>
+      <h3 *ngIf="mode === 'Incluir'">Visualizar</h3>
       <h3 class="link" (click)="exit()">Sair</h3>
     </div>
   </div>
+  <!-- Inicio do form -->
+  <form [formGroup]="formProduto">
+    <div class="row">
+      <!-- foto -->
+      <div class="col-2">
+        <div class="img-func">
+          <img alt="Avatar servidor" />
+          <div class="icon-avatar">
+            <mat-icon>person_outline</mat-icon>
+          </div>
+        </div>
+      </div>
+      <!-- 1º linha -->
+      <div class="col-10">
+        <div class="row">
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label><b>Código do produto</b></mat-label>
+            <input matInput placeholder="1232546" formControlName="id">
+          </mat-form-field>
 
-  <div class="row">
-    <!-- foto -->
-    <div class="col-2">
-      <div class="img-func">
-        <img alt="Avatar servidor" />
-        <div class="icon-avatar">
-          <mat-icon>person_outline</mat-icon>
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Descrição resumida</mat-label>
+            <input matInput placeholder="Descrição resumida" formControlName="descricaoResumida">
+          </mat-form-field>
+
+          <mat-form-field floatLabel="always" appearance="outline" class="col-6">
+            <mat-label>Descriação completa</mat-label>
+            <input matInput placeholder="Descrição completa do produto" formControlName="descricaoCompleta">
+          </mat-form-field>
+        </div>
+        <!-- 2º linha -->
+        <div class="row">
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Categoria</mat-label>
+            <mat-select matNativeControl required [(value)]="selected" formControlName="category">
+              <mat-option value="option">selecione</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Grupo</mat-label>
+            <mat-select matNativeControl required [(value)]="selected" formControlName="group">
+              <mat-option value="option">selecione</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field floatLabel="always" appearance="outline" class="col-2">
+            <mat-label>Sub-grupo</mat-label>
+            <mat-select matNativeControl required [(value)]="selected" formControlName="subGroup">
+              <mat-option value="option">selecione</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-radio-group floatLabel="always" appearance="outline" class="col-4" formControlName="situation">
+            <mat-label>Situação:</mat-label>
+            <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
+            <mat-radio-button value="false">Inativo</mat-radio-button>
+          </mat-radio-group>
         </div>
       </div>
     </div>
-    <!-- 1º linha -->
-    <div class="col-10">
-      <div class="row">
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label><b>Código do produto</b></mat-label>
-          <input matInput placeholder="1232546">
-        </mat-form-field>
 
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Descrição resumida</mat-label>
-          <input matInput placeholder="Descrição resumida">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" appearance="outline" class="col-6">
-          <mat-label>Descriação completa</mat-label>
-          <input matInput placeholder="Descrição completa do produto ">
-        </mat-form-field>
-      </div>
-      <!-- 2º linha -->
-      <div class="row">
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Categoria</mat-label>
-          <mat-select matNativeControl required [(value)]="selected">
-            <mat-option value="option">selecione</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Grupo</mat-label>
-          <mat-select matNativeControl required [(value)]="selected">
-            <mat-option value="option">selecione</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" appearance="outline" class="col-2">
-          <mat-label>Sub-grupo</mat-label>
-          <mat-select matNativeControl required [(value)]="selected">
-            <mat-option value="option">selecione</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-radio-group floatLabel="always" appearance="outline" class="col-4">
-          <mat-label>Situação:</mat-label>
-          <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
-          <mat-radio-button value="false">Inativo</mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <!-- 3º linha -->
-  <div class="row">
-    <div class="col-2">
-    </div>
-
-    <div class="col-10">
-      <div class="row">
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Preço de venda</mat-label>
-          <input matInput placeholder="R$: 2,90">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Preço de custo</mat-label>
-          <input matInput placeholder="R$: 2,15">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Margem </mat-label>
-          <input matInput placeholder="30%">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-          <mat-label>Unidade de medida</mat-label>
-          <mat-select matNativeControl required [(value)]="selected">
-            <mat-option value="option">--selecione--</mat-option>
-            <mat-option value="option">KILO - KG</mat-option>
-            <mat-option value="option">UNIDADE - UN</mat-option>
-          </mat-select>
-        </mat-form-field>
+    <!-- 3º linha -->
+    <div class="row">
+      <div class="col-2">
       </div>
 
+      <div class="col-10">
+        <div class="row">
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Preço de venda</mat-label>
+            <input matInput formControlName="salePrice">
+          </mat-form-field>
+
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Preço de custo</mat-label>
+            <input matInput formControlName="costPrice">
+          </mat-form-field>
+
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Margem </mat-label>
+            <input matInput formControlName="margin">
+          </mat-form-field>
+
+          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
+            <mat-label>Unidade de medida</mat-label>
+            <mat-select matNativeControl required [(value)]="selected" formControlName="unitOfMeasurement">
+              <mat-option *ngFor="let item of unitOfMeasurement" [value]="item.id">
+                {{ item.category }}
+              </mat-option>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <mat-form-field floatLabel="always" appearance="outline" class="col-2">
+        <mat-label>Código EAN</mat-label>
+        <input matInput formControlName="eanCode">
+      </mat-form-field>
     </div>
-    <mat-form-field floatLabel="always" appearance="outline" class="col-2">
-      <mat-label>Código EAN</mat-label>
-      <input matInput placeholder="789456123">
-    </mat-form-field>
-  </div>
+  </form>
 </div>

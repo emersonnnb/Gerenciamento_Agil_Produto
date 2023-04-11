@@ -14,8 +14,12 @@ export class ProdutoService {
   ) { }
 
   public getAllProduto(params: HttpParams): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}`, { params });
+    return this.httpClient.get(`${environment.apiUrl}/produtos/`, { params });
   }
+
+  public getIdProduto(id: number): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/produtos/${id}`);
+  };
 
   public postProduto(data: ProdutoModel): Observable<unknown> {
     return this.httpClient.post<any>(`${environment.apiUrl}`, data);
