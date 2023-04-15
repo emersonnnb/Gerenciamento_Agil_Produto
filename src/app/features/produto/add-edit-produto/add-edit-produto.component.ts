@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
@@ -19,7 +19,15 @@ export class AddEditProdutoComponent implements OnInit {
   mode!: FormModeEnum;
   id!: number;
   selected = 'option';
+
   unitOfMeasurement: any = [];
+  categoryDomain: any = [];
+  grupoDomain: any = [];
+  subGrupoDomain: any = []
+
+  categoryList: any = [];
+  grupoList: any = [];
+  subGrupoList: any = [];
 
   constructor(
     public dialogRef: MatDialogRef<AddEditProdutoComponent>,
@@ -32,10 +40,10 @@ export class AddEditProdutoComponent implements OnInit {
   ngOnInit(): void {
 
     this.mode = this.data.mode;
-    console.log(this.mode);
     this.id = this.data.id;
     this.data = this.data.data;
     this.getProdutoId();
+    this.getCategoryGrupoSubgrupo();
 
     this.formProduto = this.formBuilder.group({
       id: [null],
@@ -59,7 +67,7 @@ export class AddEditProdutoComponent implements OnInit {
         break;
 
       case this.formModeEnum.Visualizar:
-        // this.formProduto.disable();
+        this.formProduto.disable();
         //this.formProduto.controls.situation?.disable();
         //this.fillForm(this.data);
         break;
@@ -75,7 +83,6 @@ export class AddEditProdutoComponent implements OnInit {
   }
 
   private getProdutoId(): void {
-    console.log(this.id);
     this.produtoService.getIdProduto(this.id)
       .pipe().subscribe({
         next: (response: ProdutoModel | any) => {
@@ -91,19 +98,13 @@ export class AddEditProdutoComponent implements OnInit {
           // this.resetValuesAddress();
         }
       })
-
   }
-
-  // fillForm(data: any) {
-  //   this.formProduto.patchValue({
-
-  //   });
-  //}
 
   editProduto() {
     this.mode = this.formModeEnum.Editar;
     this.formProduto.enable();
   }
+
 
   addProduto() {
     const values = this.formProduto.getRawValue() as ProdutoModel;
@@ -129,6 +130,23 @@ export class AddEditProdutoComponent implements OnInit {
         //this.dialogService.alert(error.error?.message);
       },
     });
+  };
+
+  getCategoryGrupoSubgrupo(): void {
+    this.produtoService.getAllCategoria().subscribe((data) => {
+      this.categoryDomain = data;
+      this.categoryList = this.categoryDomain.slice();
+    });
+
+    this.produtoService.getAllGrupo().subscribe((data) => {
+      this.grupoDomain = data;
+      this.grupoList = this.grupoDomain.slice();
+    });
+    this.produtoService.getAllSubGrupo().subscribe((data) => {
+      this.subGrupoDomain = data;
+      this.subGrupoList = this.subGrupoDomain.slice();
+    });
+
   };
 
   exit(): void {

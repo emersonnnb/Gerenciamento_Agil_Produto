@@ -21,6 +21,16 @@ export class ProdutoService {
     return this.httpClient.get(`${environment.apiUrl}/produtos/${id}`);
   };
 
+  public getAllCategoria(): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/categorias/`);
+  }
+  public getAllGrupo(): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/grupos/`);
+  }
+  public getAllSubGrupo(): Observable<any> {
+    return this.httpClient.get(`${environment.apiUrl}/subGrupos/`);
+  }
+
   public postProduto(data: ProdutoModel): Observable<unknown> {
     return this.httpClient.post<any>(`${environment.apiUrl}`, data);
   };

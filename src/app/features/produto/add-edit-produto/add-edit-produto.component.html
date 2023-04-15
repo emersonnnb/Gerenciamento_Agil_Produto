@@ -1,113 +1,150 @@
-<div class="form">
-  <!-- Titulo da page -->
-  <div class="row">
-    <div class="title">
-      <h3 *ngIf="mode === 'Editar'">Editar</h3>
-      <h3 *ngIf="mode === 'Visualizar'">Visualizar</h3>
-      <h3 *ngIf="mode === 'Incluir'">Visualizar</h3>
-      <h3 class="link" (click)="exit()">Sair</h3>
-    </div>
-  </div>
-  <!-- Inicio do form -->
-  <form [formGroup]="formProduto">
-    <div class="row">
-      <!-- foto -->
-      <div class="col-2">
-        <div class="img-func">
-          <img alt="Avatar servidor" />
-          <div class="icon-avatar">
-            <mat-icon>person_outline</mat-icon>
+<section>
+  <mat-dialog-content class="mat-typography">
+    <form [formGroup]="formProduto">
+      <div class="m-4">
+        <div class="row d-flex justify-content-between">
+          <div class="col-auto h3-bold">
+            <ng-container [ngSwitch]="mode">
+              <ng-container *ngSwitchCase="'Visualizar'">
+                Visualizar
+              </ng-container>
+              <ng-container *ngSwitchCase="'Editar'">
+                Editar
+              </ng-container>
+            </ng-container>
+            produto
+          </div>
+
+          <!-- <h1 class="fw-bold col-sm-6 col-md-10">Incluir artefato</h1> -->
+          <button class="col-sm-6 col-md-2 bg-dark" mat-flat-button style="color: white;">
+            <mat-icon style="font-size: 18px">save</mat-icon>
+            Salvar
+          </button>
+        </div>
+
+        <div class="position-relative ">
+          <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight>
+            <mat-tab label="Identificação">
+              <div class="row my-4">
+                <div class="row">
+
+                  <div class="col-2">
+                    <div class="img-func">
+                      <!-- <img alt="Imagem Produto" /> -->
+                      <div class="icon-avatar">
+                        <mat-icon>person_outline</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="row w-100">
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
+                        <mat-label>id</mat-label>
+                        <input type="number" matInput formControlName="id" readonly="">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-4">
+                        <mat-label>Descrição resumida</mat-label>
+                        <input matInput formControlName="descricaoResumida" />
+                      </mat-form-field>
+
+                      <mat-form-field class="col-sm-12 col-md-6" appearance="outline" floatLabel="always">
+                        <mat-label>Descrição completa</mat-label>
+                        <input matInput formControlName="descricaoCompleta" />
+                      </mat-form-field>
+                    </div>
+
+                    <div class="row w-100">
+                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select formControlName="category" name="allocation" placeholder="Selecionar" #allocation>
+                          <mat-select-filter [array]="alocacaoDomain" *ngIf="allocation.focused"
+                            displayMember="nameOrgao" (filteredReturn)="alocacaoList = $event" placeholder="Pesquisar">
+                          </mat-select-filter>
+                          <mat-option *ngFor="let item of categoryList" [value]="item.id">
+                            {{ item.description }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
+                        <mat-label>Grupo</mat-label>
+                        <mat-select placeholder="Selecione" formControlName="group">
+                          <mat-option value="Ativo">Ativo</mat-option>
+                          <mat-option value="Inativo">Inativo</mat-option>
+                          <mat-option value="Cancelado">Cancelado</mat-option>
+                          <mat-option value="Aguardando">Aguardando</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
+                        <mat-label>Sub grupo</mat-label>
+                        <mat-select placeholder="Selecione" formControlName="subGroup">
+                          <mat-option value="Ativo">Ativo</mat-option>
+                          <mat-option value="Inativo">Inativo</mat-option>
+                          <mat-option value="Cancelado">Cancelado</mat-option>
+                          <mat-option value="Aguardando">Aguardando</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
+                        <mat-label>Código EAN</mat-label>
+                        <input type="number" matInput formControlName="eanCode">
+                      </mat-form-field>
+
+                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
+                        <mat-label>Unidade medida</mat-label>
+                        <mat-select placeholder="Selecione" formControlName="subGroup">
+                          <mat-option value="1i">UNIDADE</mat-option>
+                          <mat-option value="2">KG</mat-option>
+                          <mat-option value="3">SACO</mat-option>
+
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-radio-group class="col-sm-12 col-md-2" appearance="outline" floatLabel="always"
+                        formControlName="situation">
+                        <mat-label class="d-block">Situação:</mat-label>
+                        <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
+                        <mat-radio-button value="false">Inativo</mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+
+                    <div class="row">
+
+                      <mat-form-field class="col-md-2 col-sm-12" appearance="outline" floatLabel="always">
+                        <mat-label>Preço de custo</mat-label>
+                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
+                          placeholder="R$ 999.999,99" matInput formControlName="costPrice" required>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
+                        <mat-label>Margem</mat-label>
+                        <input type="number" matInput formControlName="margin">
+                      </mat-form-field>
+
+                      <mat-form-field class="col-md-2 col-sm-12" appearance="outline" floatLabel="always">
+                        <mat-label>Preço de venda</mat-label>
+                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
+                          placeholder="R$ 999.999,99" matInput formControlName="salePrice" required>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
+                        <mat-label>Estoque</mat-label>
+                        <input type="number" matInput formControlName="margin">
+                      </mat-form-field>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+          <div class="close-back-container">
+            <button mat-button class="button-exit button d-none d-sm-block" (click)="exit()">Sair</button>
           </div>
         </div>
       </div>
-      <!-- 1º linha -->
-      <div class="col-10">
-        <div class="row">
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label><b>Código do produto</b></mat-label>
-            <input matInput placeholder="1232546" formControlName="id">
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Descrição resumida</mat-label>
-            <input matInput placeholder="Descrição resumida" formControlName="descricaoResumida">
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-6">
-            <mat-label>Descriação completa</mat-label>
-            <input matInput placeholder="Descrição completa do produto" formControlName="descricaoCompleta">
-          </mat-form-field>
-        </div>
-        <!-- 2º linha -->
-        <div class="row">
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Categoria</mat-label>
-            <mat-select matNativeControl required [(value)]="selected" formControlName="category">
-              <mat-option value="option">selecione</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Grupo</mat-label>
-            <mat-select matNativeControl required [(value)]="selected" formControlName="group">
-              <mat-option value="option">selecione</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-2">
-            <mat-label>Sub-grupo</mat-label>
-            <mat-select matNativeControl required [(value)]="selected" formControlName="subGroup">
-              <mat-option value="option">selecione</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-radio-group floatLabel="always" appearance="outline" class="col-4" formControlName="situation">
-            <mat-label>Situação:</mat-label>
-            <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
-            <mat-radio-button value="false">Inativo</mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3º linha -->
-    <div class="row">
-      <div class="col-2">
-      </div>
-
-      <div class="col-10">
-        <div class="row">
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Preço de venda</mat-label>
-            <input matInput formControlName="salePrice">
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Preço de custo</mat-label>
-            <input matInput formControlName="costPrice">
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Margem </mat-label>
-            <input matInput formControlName="margin">
-          </mat-form-field>
-
-          <mat-form-field floatLabel="always" appearance="outline" class="col-3">
-            <mat-label>Unidade de medida</mat-label>
-            <mat-select matNativeControl required [(value)]="selected" formControlName="unitOfMeasurement">
-              <mat-option *ngFor="let item of unitOfMeasurement" [value]="item.id">
-                {{ item.category }}
-              </mat-option>
-
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-      </div>
-      <mat-form-field floatLabel="always" appearance="outline" class="col-2">
-        <mat-label>Código EAN</mat-label>
-        <input matInput formControlName="eanCode">
-      </mat-form-field>
-    </div>
-  </form>
-</div>
+    </form>
+  </mat-dialog-content>
+</section>
