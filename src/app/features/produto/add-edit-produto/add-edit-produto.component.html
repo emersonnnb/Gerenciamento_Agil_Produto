@@ -58,9 +58,10 @@
                     <div class="row w-100">
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="category" name="allocation" placeholder="Selecionar" #allocation>
-                          <mat-select-filter [array]="alocacaoDomain" *ngIf="allocation.focused"
-                            displayMember="nameOrgao" (filteredReturn)="alocacaoList = $event" placeholder="Pesquisar">
+                        <mat-select formControlName="category" name="category" placeholder=" Selecionar" #category>
+                          <mat-select-filter [array]="categoryDomain" *ngIf="category.focused"
+                            displayMember="description" (filteredReturn)="categoryList = $event"
+                            placeholder="Pesquisar">
                           </mat-select-filter>
                           <mat-option *ngFor="let item of categoryList" [value]="item.id">
                             {{ item.description }}
