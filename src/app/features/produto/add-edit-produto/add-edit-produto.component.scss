@@ -1,3 +1,7 @@
+.mat-column-actions {
+  width: 33% !important;
+}
+
 .img-func {
   border: 1px solid #646464;
   width: 123px;
@@ -86,4 +90,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .mdc-text-field--disabled {
   color: #e33e38 !important;
+}
+
+.button_save {
+  color: white !important;
+  width: 284px;
+  height: 48px;
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgb(54, 54, 54) 50.42%,
+    rgb(0, 0, 0) 100%
+  );
 }

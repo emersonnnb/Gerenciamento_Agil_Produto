@@ -8,7 +8,7 @@
       "group": 1,
       "subGroup": "",
       "situation": "true",
-      "salePrice": 2.50,
+      "salePrice": 2.5,
       "costPrice": 1.99,
       "margin": 15,
       "unitOfMeasurement": "UN",
@@ -22,11 +22,25 @@
       "group": 2,
       "subGroup": 1,
       "situation": "false",
-      "salePrice": 4.50,
+      "salePrice": 4.5,
       "costPrice": 2.99,
       "margin": 25,
       "unitOfMeasurement": "kg",
       "eanCode": 789321654
+    },
+    {
+      "id": 3,
+      "descricaoResumida": "teste",
+      "descricaoCompleta": "231321321",
+      "category": 1,
+      "group": 1,
+      "subGroup": "1i",
+      "situation": "false",
+      "salePrice": 212.12,
+      "costPrice": 212.12,
+      "margin": 21,
+      "unitOfMeasurement": null,
+      "eanCode": 1
     }
   ],
   "categorias": [

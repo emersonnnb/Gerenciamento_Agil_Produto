@@ -1,5 +1,5 @@
 export interface ProdutoModel {
-  id: number,
+  id?: number,
   descricaoResumida: string,
   descricaoCompleta: string,
   category: number,

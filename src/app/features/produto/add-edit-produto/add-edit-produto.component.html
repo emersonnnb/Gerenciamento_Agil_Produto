@@ -11,14 +11,24 @@
               <ng-container *ngSwitchCase="'Editar'">
                 Editar
               </ng-container>
+              <ng-container *ngSwitchCase="'Incluir'">
+                Cadastrar
+              </ng-container>
             </ng-container>
             produto
           </div>
 
           <!-- <h1 class="fw-bold col-sm-6 col-md-10">Incluir artefato</h1> -->
-          <button class="col-sm-6 col-md-2 bg-dark" mat-flat-button style="color: white;">
+          <button class="button_save col-sm-6 col-md-2 bg-dark" mat-flat-button
+            *ngIf=" mode !== formModeEnum.Visualizar" (click)="addProduto()">
             <mat-icon style="font-size: 18px">save</mat-icon>
             Salvar
+          </button>
+
+          <button class="button_save col-sm-6 col-md-2 bg-dark" mat-flat-button
+            *ngIf=" mode === formModeEnum.Visualizar">
+            <mat-icon style="font-size: 18px">edit</mat-icon>
+            Editar
           </button>
         </div>
 
@@ -71,21 +81,19 @@
 
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Grupo</mat-label>
-                        <mat-select placeholder="Selecione" formControlName="group">
-                          <mat-option value="Ativo">Ativo</mat-option>
-                          <mat-option value="Inativo">Inativo</mat-option>
-                          <mat-option value="Cancelado">Cancelado</mat-option>
-                          <mat-option value="Aguardando">Aguardando</mat-option>
+                        <mat-select placeholder="Selecionar" formControlName="group">
+                          <mat-option *ngFor="let item of grupoList" [value]="item.id">
+                            {{ item.description }}
+                          </mat-option>
                         </mat-select>
                       </mat-form-field>
 
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Sub grupo</mat-label>
                         <mat-select placeholder="Selecione" formControlName="subGroup">
-                          <mat-option value="Ativo">Ativo</mat-option>
-                          <mat-option value="Inativo">Inativo</mat-option>
-                          <mat-option value="Cancelado">Cancelado</mat-option>
-                          <mat-option value="Aguardando">Aguardando</mat-option>
+                          <mat-option *ngFor="let item of subGrupoList" [value]="item.id">
+                            {{ item.description }}
+                          </mat-option>
                         </mat-select>
                       </mat-form-field>
 

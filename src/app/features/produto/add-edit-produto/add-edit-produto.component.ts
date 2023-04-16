@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
-
 import { ProdutoService } from '../services/produto.service';
 
 @Component({
@@ -31,7 +30,7 @@ export class AddEditProdutoComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddEditProdutoComponent>,
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private produtoService: ProdutoService,
 
@@ -45,7 +44,7 @@ export class AddEditProdutoComponent implements OnInit {
     this.getProdutoId();
     this.getCategoryGrupoSubgrupo();
 
-    this.formProduto = this.formBuilder.group({
+    this.formProduto = this.fb.group({
       id: [null],
       descricaoResumida: [null],
       descricaoCompleta: [null],
@@ -62,8 +61,8 @@ export class AddEditProdutoComponent implements OnInit {
 
     switch (this.mode) {
       case this.formModeEnum.Incluir:
-        //this.formProduto.enable();
-        //this.formProduto.controls.situation?.disable();
+        this.formProduto.enable();
+        this.formProduto.controls['id'].disable();
         break;
 
       case this.formModeEnum.Visualizar:
@@ -87,7 +86,6 @@ export class AddEditProdutoComponent implements OnInit {
       .pipe().subscribe({
         next: (response: ProdutoModel | any) => {
           this.formProduto.patchValue(response);
-
           if (this.mode === this.formModeEnum.Visualizar) {
             //this.formProduto.disable();
           }
@@ -107,21 +105,24 @@ export class AddEditProdutoComponent implements OnInit {
 
 
   addProduto() {
-    const values = this.formProduto.getRawValue() as ProdutoModel;
-    if (values.descricaoResumida !== null) {
-      values.descricaoResumida = values.descricaoResumida.trim();
-    } else {
-      values.situation = values.situation;
-    }
-    values.situation = values.situation;
-    delete values?.situation;
 
-    if (this.formProduto.invalid || values.descricaoResumida === '') {
-      this.formProduto.markAllAsTouched();
-      return;
-    }
+    const formvalues = this.formProduto.getRawValue() as ProdutoModel;
 
-    this.produtoService.postProduto(values).subscribe({
+    // if (values.descricaoResumida !== null) {
+    //   values.descricaoResumida = values.descricaoResumida.trim();
+    // } else {
+    //   values.situation = values.situation;
+    // }
+    // values.situation = values.situation;
+    // delete values?.situation;
+
+    // if (this.formProduto.invalid || values.descricaoResumida === '') {
+    //   this.formProduto.markAllAsTouched();
+    //   return;
+    // }
+    console.log(formvalues);
+
+    this.produtoService.postProduto(formvalues).subscribe({
       next: () => {
         this.formProduto.reset();
         this.dialogRef.close();

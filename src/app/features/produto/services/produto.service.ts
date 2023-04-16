@@ -31,12 +31,12 @@ export class ProdutoService {
     return this.httpClient.get(`${environment.apiUrl}/subGrupos/`);
   }
 
-  public postProduto(data: ProdutoModel): Observable<unknown> {
-    return this.httpClient.post<any>(`${environment.apiUrl}`, data);
+  public postProduto(payload: ProdutoModel): Observable<ProdutoModel> {
+    return this.httpClient.post<ProdutoModel>(`${environment.apiUrl}/produtos`, payload);
   };
 
-  public deletProduto(id: number): Observable<any> {
-    return this.httpClient.delete(`${environment.apiUrl}/${id}`)
+  public deleteProduto(id: number): Observable<any> {
+    return this.httpClient.delete(`${environment.apiUrl}/produtos/${id}`)
   };
 }
 

@@ -47,21 +47,27 @@
         <mat-icon aria-hidden="false" (click)="openDialogProduto(row.id, formModeEnum.Editar)" [matTooltip]="'Editar'">
           edit
         </mat-icon>
+        <mat-icon aria-hidden="false" (click)="deleteProduto(row.id)" [matTooltip]="'Remover'">
+          delete_forever
+        </mat-icon>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
     <tr class="mat-row" *matNoDataRow>
       <td class="no-data-row" colspan="12">
         <div class="ps-3">Nenhum registro localizado.</div>
       </td>
     </tr>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="pageEvent.length" [pageIndex]="pageEvent.pageIndex"
-      [pageSize]="pageEvent.pageSize" showFirstLastButtons (page)="getProduto($event)"
-      aria-label="Select page of users">
-    </mat-paginator>
   </table>
+  <tr class=" border-bottom pt-2 pb-2 d-flex justify-content-center">
+    <a (click)="openDialogProduto(null,formModeEnum.Incluir)" class="d-flex align-items-center"
+      style="text-decoration:none;color: inherit;cursor:pointer;">
+      <mat-icon>add_circle_outline</mat-icon>&nbsp;&nbsp;Cadastrar acesso externo
+    </a>
+  </tr>
 </div>
+<!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="pageEvent.length" [pageIndex]="pageEvent.pageIndex"
+  [pageSize]="pageEvent.pageSize" showFirstLastButtons (page)="getProduto($event)" aria-label="Select page of users">
+</mat-paginator> -->

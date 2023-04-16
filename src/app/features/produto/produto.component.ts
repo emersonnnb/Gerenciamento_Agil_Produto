@@ -67,6 +67,17 @@ export class ProdutoComponent implements OnInit {
     });
   };
 
+  deleteProduto(produtoId: number) {
+    this.api.deleteProduto(produtoId).subscribe({
+      next: () => {
+        this.getProduto(this.pageEvent);
+      },
+      error: (error) => {
+        // this.dialogService.alert(error.error?.message || "Sistema indisponível no momento.")
+      }
+    })
+  };
+
 
   openDialogProduto(id: number | null, mode: string) {
     return this.dialog.open(AddEditProdutoComponent, {
