@@ -18,3 +18,85 @@ button {
   line-height: 24px;
   color: #363636;
 }
+
+.footer-row {
+  background: #f4f4f4 !important;
+  margin: 0 auto !important;
+  border-top-width: 1.1px !important;
+  border-top-style: solid !important;
+  border-bottom-width: 1.1px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: #d8d8d8 !important;
+  border-top-color: #d8d8d8 !important;
+}
+
+.footer-row p {
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  margin: 4px 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-row-menu {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  top: 0;
+  background-color: #363636;
+  padding: 11px 10px;
+  width: max-content;
+  font-weight: 400;
+  margin-right: 16px;
+  right: 0;
+  z-index: 1;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.tab-row-menu:hover mat-icon:not(:hover):not(.cancel) {
+  color: #969696;
+}
+
+.tab-row-menu:hover mat-icon:hover:not(.cancel) {
+  color: #fff;
+}
+
+.tab-row-menu mat-icon {
+  color: #fff;
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 16px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.tab-row-menu .cancel {
+  margin-right: 8px;
+  color: #e33e38;
+}
+
+.tab-row-menu .label-txt {
+  color: #e5e5e5;
+  display: inline-flex;
+  border-right: 1px solid #ffffff;
+  padding-right: 16px;
+  padding-left: 8px;
+  margin-right: 8px;
+}
+
+.mat-column-actions {
+  width: 6%;
+  text-align: center;
+  .mat-icon {
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+    font-size: 18px;
+    cursor: pointer;
+  }
+}

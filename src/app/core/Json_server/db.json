@@ -27,20 +27,6 @@
       "margin": 25,
       "unitOfMeasurement": "kg",
       "eanCode": 789321654
-    },
-    {
-      "id": 3,
-      "descricaoResumida": "teste",
-      "descricaoCompleta": "231321321",
-      "category": 1,
-      "group": 1,
-      "subGroup": "1i",
-      "situation": "false",
-      "salePrice": 212.12,
-      "costPrice": 212.12,
-      "margin": 21,
-      "unitOfMeasurement": null,
-      "eanCode": 1
     }
   ],
   "categorias": [

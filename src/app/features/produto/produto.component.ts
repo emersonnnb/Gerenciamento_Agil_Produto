@@ -18,6 +18,9 @@ import { ProdutoService } from './services/produto.service';
 })
 export class ProdutoComponent implements OnInit {
 
+  public menuIndex: number | undefined = undefined;
+  public labelAcaoAtualtemListaMenu: string = '';
+
   dataSourceProduto!: MatTableDataSource<ProdutoModel>
 
   public displayedColumns: string[] = [
