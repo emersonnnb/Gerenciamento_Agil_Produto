@@ -30,6 +30,8 @@ import { VendaComponent } from './features/venda/venda.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatSelectModule,
     MatSlideToggleModule,
     CurrencyMaskModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync()

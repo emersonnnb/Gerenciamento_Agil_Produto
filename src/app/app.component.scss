@@ -1,0 +1,26 @@
+mat-sidenav-container{
+    height: calc(205vh - 115vh);
+}
+
+mat-sidenav{
+    width: 200px;
+    background-color: #ffffff;
+}
+
+mat-list-item {
+    a {
+        text-decoration: none;
+        color: inherit;
+    }    
+    //border-bottom: 1px solid;
+
+    .mat-icon {
+      height: 20px;
+      width: 20px;
+      margin: 0 5px;
+    }
+}
+
+mat-list-item:hover {
+    background-color: #a2aef1;        
+}

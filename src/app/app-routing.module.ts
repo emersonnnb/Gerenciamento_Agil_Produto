@@ -6,7 +6,7 @@ import { UserComponent } from './features/user/user.component';
 import { VendaComponent } from './features/venda/venda.component';
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
+  // { path: "", component: LoginComponent },
   { path: "produto", component: ProdutoComponent },
   { path: "user", component: UserComponent },
   { path: "venda", component: VendaComponent },
