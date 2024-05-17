@@ -29,6 +29,7 @@ import { UserComponent } from './features/user/user.component';
 import { VendaComponent } from './features/venda/venda.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,9 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     MatSlideToggleModule,
     CurrencyMaskModule,
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
