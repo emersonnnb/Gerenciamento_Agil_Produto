@@ -29,9 +29,6 @@ import { UserComponent } from './features/user/user.component';
 import { VendaComponent } from './features/venda/venda.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CurrencyMaskModule } from "ng2-currency-mask";
-import { MatSelectFilterModule } from 'mat-select-filter';
-
-
 
 @NgModule({
   declarations: [
@@ -66,7 +63,6 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     MatSelectModule,
     MatSlideToggleModule,
     CurrencyMaskModule,
-    MatSelectFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent],

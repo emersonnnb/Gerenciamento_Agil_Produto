@@ -68,11 +68,7 @@
                     <div class="row w-100">
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="category" name="category" placeholder=" Selecionar" #category>
-                          <mat-select-filter [array]="categoryDomain" *ngIf="category.focused"
-                            displayMember="description" (filteredReturn)="categoryList = $event"
-                            placeholder="Pesquisar">
-                          </mat-select-filter>
+                        <mat-select formControlName="category" name="category" placeholder=" Selecionar" #category>s                 
                           <mat-option *ngFor="let item of categoryList" [value]="item.id">
                             {{ item.description }}
                           </mat-option>
