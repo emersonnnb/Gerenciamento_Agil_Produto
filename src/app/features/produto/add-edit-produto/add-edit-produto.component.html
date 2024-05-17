@@ -68,7 +68,7 @@
                     <div class="row w-100">
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="category" name="category" placeholder=" Selecionar" #category>s                 
+                        <mat-select formControlName="category" name="category" placeholder=" Selecionar">
                           <mat-option *ngFor="let item of categoryList" [value]="item.id">
                             {{ item.description }}
                           </mat-option>
