@@ -8,25 +8,17 @@
 
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">        
-        <mat-list class="pt-0">
-            <mat-list-item><a routerLink="/produto"><mat-icon>list</mat-icon>Produtos</a></mat-list-item>
-            <mat-list-item><a routerLink="/user"><mat-icon>group</mat-icon>Usuários</a></mat-list-item>                        
-            <mat-list-item><a routerLink="/user"><mat-icon>finance</mat-icon>Financeiro</a></mat-list-item>                        
-            <mat-list-item><a routerLink="/user"><mat-icon>group</mat-icon>Dashboard</a></mat-list-item>                        
-            <mat-list-item><a routerLink="/user"><mat-icon>settings</mat-icon>Configurações</a></mat-list-item>                        
-            <mat-list-item><a routerLink="/user"><mat-icon>invetory</mat-icon>Estoque</a></mat-list-item>                                    
-            <mat-list-item><a routerLink="/user"><mat-icon>group</mat-icon>Relatórios</a></mat-list-item>                        
+        <mat-list class="pt-0">            
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/user"><mat-icon>bar_chart_4_bars</mat-icon>Dashboard</a></mat-list-item>                        
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/produto"><mat-icon>list</mat-icon>Produtos</a></mat-list-item>
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/user"><mat-icon>group</mat-icon>Usuários</a></mat-list-item>                        
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/user"><mat-icon>attach_money</mat-icon>Financeiro</a></mat-list-item>                        
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/user"><mat-icon>settings</mat-icon>Configurações</a></mat-list-item>                        
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/user"><mat-icon>inventory</mat-icon>Estoque</a></mat-list-item>                                    
+            <mat-list-item><a class="d-flex align-items-center" routerLink="/user"><mat-icon>insights</mat-icon>Relatórios</a></mat-list-item>                        
         </mat-list>        
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>        
     </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-
-
-
-
-
-

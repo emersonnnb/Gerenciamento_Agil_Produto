@@ -21,6 +21,8 @@ button {
   color: #363636;
 }
 
+
+// -------------------- Estilização da Table -------------------------------
 .footer-row {
   background: #f4f4f4 !important;
   margin: 0 auto !important;
@@ -42,7 +44,6 @@ button {
   align-items: center;
   justify-content: center;
 }
-
 .tab-row-menu {
   position: absolute;
   display: flex;
@@ -95,6 +96,7 @@ button {
 .mat-column-actions {
   width: 6%;
   text-align: center;
+
   .mat-icon {
     margin-left: 6px !important;
     margin-right: 6px !important;
@@ -102,6 +104,3 @@ button {
     cursor: pointer;
   }
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
