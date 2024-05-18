@@ -25,9 +25,9 @@ export class AppComponent {
     { nome: 'Produtos', link: '/produtos' },
     { nome: 'Usuários', link: '/usuarios' },
     { nome: 'Financeiro', link: '/financeiro' },
-    { nome: 'Estoque', link: '/estoque' },
+    //{ nome: 'Estoque', link: '/estoque' },
     { nome: 'Configurações', link: '/configuracoes' },
-    { nome: 'Relatórios', link: '/relatorios' },    
+   // { nome: 'Relatórios', link: '/relatorios' },    
   ];
 
   getIcon(nome: string): string {

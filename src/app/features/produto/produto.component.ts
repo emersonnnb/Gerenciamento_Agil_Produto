@@ -2,15 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ListProdutoComponent } from './list-produto/list-produto.component';
-import { AddEditProdutoComponent } from './add-edit-produto/add-edit-produto.component';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
+import { EstoqueComponent } from './estoque/estoque.component';
+import { RelatoriosComponent } from './relatorios/relatorios.component';
 
 @Component({
   selector: 'app-produto',
   templateUrl: './produto.component.html',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, ListProdutoComponent, AddEditProdutoComponent ],
+  imports: [CommonModule, MatTabsModule, ListProdutoComponent, EstoqueComponent, RelatoriosComponent ],
   styleUrls: ['./produto.component.scss']
 })
 export class ProdutoComponent implements OnInit {
