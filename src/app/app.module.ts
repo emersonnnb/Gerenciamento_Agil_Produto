@@ -32,6 +32,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {MatListModule} from '@angular/material/list';
     MatSlideToggleModule,
     CurrencyMaskModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ],
   providers: [
     provideAnimationsAsync()

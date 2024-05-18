@@ -7,9 +7,14 @@ import { VendaComponent } from './features/venda/venda.component';
 
 const routes: Routes = [
   // { path: "", component: LoginComponent },
-  { path: "produto", component: ProdutoComponent },
-  { path: "user", component: UserComponent },
-  { path: "venda", component: VendaComponent },
+  { path: "produtos", component: ProdutoComponent },
+  { path: "usuarios", component: UserComponent },
+  { path: "vendas", component: VendaComponent },
+  { path: "financeiro", component: VendaComponent },
+  { path: "estoque", component: VendaComponent },
+  { path: "configuracoes", component: VendaComponent },
+  { path: "relatorios", component: VendaComponent },  
+  { path: "dashboard", component: VendaComponent },  
 ];
 
 @NgModule({
