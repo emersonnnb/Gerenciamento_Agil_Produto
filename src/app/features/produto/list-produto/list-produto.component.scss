@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import "../variables.scss";
 
 table {
   width: 100%;
@@ -60,21 +60,6 @@ th.mat-header-cell {
   justify-content: center;
 }
 
-// .mat-radio-group {
-//   display: block !important;
-//   font-weight: 300;
-//   font-size: 14px;
-//   line-height: 24px;
-//   letter-spacing: 0.05em;
-//   color: #646464;
-//   margin: 0;
-// }
-
 .mdc-data-table__cell {
   overflow: unset !important;
-}
-
-
-::ng-deep .mat-mdc-tab-labels {
-  border-bottom: 1px solid rgba(0, 0, 0, .12);
 }

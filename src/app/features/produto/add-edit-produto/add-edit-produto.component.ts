@@ -1,13 +1,23 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, ReactiveFormsModule, } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
 import { ProdutoService } from '../services/produto.service';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @Component({
   selector: 'app-add-edit-produto',
   templateUrl: './add-edit-produto.component.html',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatIconModule, ReactiveFormsModule, MatTabsModule, MatRadioModule, MatSelectModule, CurrencyMaskModule],
   styleUrls: ['./add-edit-produto.component.scss']
 })
 export class AddEditProdutoComponent implements OnInit {
