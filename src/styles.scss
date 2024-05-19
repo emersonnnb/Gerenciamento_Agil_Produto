@@ -104,3 +104,29 @@ button {
     cursor: pointer;
   }
 }
+
+.button_save {
+  color: white !important;
+  width: 284px;
+  height: 48px;
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgb(54, 54, 54) 50.42%,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+//Ajuste no tamanho dos inputs do form field
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.mat-mdc-form-field-infix {
+  min-height: 13px !important;
+}
+
+// Ajuste da altura dos button
+.mdc-button {
+  height: 42px !important;
+}

@@ -12,12 +12,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-edit-produto',
   templateUrl: './add-edit-produto.component.html',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatIconModule, ReactiveFormsModule, MatTabsModule, MatRadioModule, MatSelectModule, CurrencyMaskModule],
+  imports: [CommonModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatIconModule, ReactiveFormsModule, MatTabsModule, MatRadioModule, MatSelectModule, CurrencyMaskModule, MatButtonModule],
   styleUrls: ['./add-edit-produto.component.scss']
 })
 export class AddEditProdutoComponent implements OnInit {

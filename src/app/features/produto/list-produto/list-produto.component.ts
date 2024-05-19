@@ -1,22 +1,29 @@
 import { HttpClientModule, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
 import { AddEditProdutoComponent } from '../add-edit-produto/add-edit-produto.component';
 import { ProdutoService } from '../services/produto.service';
 import { CommonModule } from '@angular/common';
+
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @Component({
   selector: 'app-list-produto',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatIconModule, MatSlideToggleModule, MatTooltipModule, HttpClientModule],
+  imports: [MatTableModule, CommonModule, MatIconModule, MatSlideToggleModule, MatTooltipModule, HttpClientModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule,MatButtonModule, MatSelectModule],
   templateUrl: './list-produto.component.html',
   styleUrl: './list-produto.component.scss',  
 
@@ -25,6 +32,9 @@ export class ListProdutoComponent {
 
   public menuIndex: number | undefined = undefined;
   public labelAcaoAtualtemListaMenu: string = '';
+
+  form!: FormGroup;
+
 
   dataSourceProduto!: MatTableDataSource<ProdutoModel>
 
@@ -36,6 +46,10 @@ export class ListProdutoComponent {
     "salePrice",
     "actions"
   ];
+
+  searchByOptions: string[] = ['Código', 'Descrição', 'Categoria'];
+  categoriaOptions: string[] = ['Categoria A', 'Categoria B', 'Categoria C'];
+
   formModeEnum = FormModeEnum;
 
   pageOrder = 'ASC';
@@ -54,10 +68,23 @@ export class ListProdutoComponent {
   constructor(
     private api: ProdutoService,
     public dialog: MatDialog,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    this.bulidForm();
     this.getProduto(this.pageEvent);
+  }
+
+  bulidForm() {
+    this.form = this.fb.group({      
+      searchBy: [null, Validators.required],
+      searchType: [null, Validators.required]      
+    });
+  }
+
+  onSearchByChange() {  
+      this.form.get('searchType')?.reset();  
   }
 
   getProduto(event: PageEvent) {
@@ -85,6 +112,10 @@ export class ListProdutoComponent {
       }
     })
   };
+
+  clearSearchType() {
+    this.form.get('searchType')?.setValue('');
+  }
 
 
   openDialogProduto(id: number | null, mode: string) {
