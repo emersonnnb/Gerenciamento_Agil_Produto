@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar *ngIf="showSidebar" color="primary">
     <mat-toolbar-row class="d-flex justify-content-between">
         <div>
             <span> ERP GAP</span> 
@@ -23,8 +23,8 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container>
-    <mat-sidenav [(opened)]="opened" mode="side">
+<mat-sidenav-container  [ngClass]="{'h-100': !showSidebar}">
+    <mat-sidenav [(opened)]="opened" mode="side" *ngIf="showSidebar" >
         <mat-list class="pt-0">
             <ng-container *ngFor="let item of menuItems">
               <mat-list-item routerLinkActive="active">
@@ -36,6 +36,6 @@
           </mat-list>
     </mat-sidenav>
     <mat-sidenav-content class="mt-3">
-        <router-outlet ></router-outlet>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
