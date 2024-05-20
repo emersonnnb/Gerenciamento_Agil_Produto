@@ -49,7 +49,10 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
+  
+  toggleSidenav() {
+    this.opened = !this.opened;
+}
   getIcon(nome: string): string {
     switch (nome) {
       case 'Dashboard':

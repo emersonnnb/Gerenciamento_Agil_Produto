@@ -111,6 +111,48 @@
       "margin": null,
       "unitOfMeasurement": null,
       "eanCode": null
+    },
+    {
+      "id": 9,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 10,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 11,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
     }
   ],
   "categorias": [
