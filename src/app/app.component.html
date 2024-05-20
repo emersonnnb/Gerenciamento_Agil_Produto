@@ -1,4 +1,4 @@
-<mat-toolbar color="secondary" [ngClass]="{'toolbar-expanded': opened, 'toolbar-collapsed': !opened}">
+<mat-toolbar  *ngIf="showSidebar" color="secondary" [ngClass]="{'toolbar-expanded': opened, 'toolbar-collapsed': !opened}">
     <mat-toolbar-row class="d-flex justify-content-between">
         <div class="d-flex align-items-center"> 
             <button mat-button (click)="toggleSidenav()"><mat-icon>menu</mat-icon></button>
