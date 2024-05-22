@@ -1,19 +1,154 @@
 {
-  "posts": [
+  "produtos": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "descricaoResumida": "Mamão",
+      "descricaoCompleta": "Mamão Papaia",
+      "category": 1,
+      "group": 1,
+      "subGroup": "",
+      "situation": "true",
+      "salePrice": 2.5,
+      "costPrice": 1.99,
+      "margin": 15,
+      "unitOfMeasurement": "UN",
+      "eanCode": 789456123
+    },
+    {
+      "id": 2,
+      "descricaoResumida": "Coca 2lt",
+      "descricaoCompleta": "Coca cola 2 litros",
+      "category": 2,
+      "group": 2,
+      "subGroup": 1,
+      "situation": "false",
+      "salePrice": 4.5,
+      "costPrice": 2.99,
+      "margin": 25,
+      "unitOfMeasurement": "kg",
+      "eanCode": 789321654
+    },
+    {
+      "id": 3,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 4,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 5,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 6,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 7,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
+    },
+    {
+      "id": 8,
+      "descricaoResumida": null,
+      "descricaoCompleta": null,
+      "category": null,
+      "group": null,
+      "subGroup": null,
+      "situation": null,
+      "salePrice": null,
+      "costPrice": null,
+      "margin": null,
+      "unitOfMeasurement": null,
+      "eanCode": null
     }
   ],
-  "comments": [
+  "categorias": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "description": "Frutas"
+    },
+    {
+      "id": 2,
+      "description": "Refrigerantes"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "grupos": [
+    {
+      "id": 1,
+      "description": "Mamão"
+    },
+    {
+      "id": 2,
+      "description": "2 litros"
+    }
+  ],
+  "subGrupos": [
+    {
+      "id": 1,
+      "description": "Coca cola"
+    },
+    {
+      "id": 2,
+      "description": "Miojo"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "login": "admin",
+      "senha": 123456
+    }
+    
+  ]
 }
