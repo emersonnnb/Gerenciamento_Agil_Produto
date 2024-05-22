@@ -22,7 +22,7 @@
     <!-- </mat-toolbar-row>
 </mat-toolbar> -->
 
-<!-- <mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container">
     <mat-sidenav [(opened)]="opened" mode="side" *ngIf="showSidebar">
         <mat-list class="pt-0">
             <div class="name-menu">
@@ -36,7 +36,7 @@
                             <mat-icon>person</mat-icon>
                             <span>Meus dados</span>
                         </button>
-                        <button mat-menu-item [routerLink]="'/login'">
+                        <button mat-menu-item (click)="deslogar()">
                             <mat-icon>logout</mat-icon>
                             <span>Sair</span>
                         </button>
@@ -56,6 +56,3 @@
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
- -->
-
-<router-outlet></router-outlet>

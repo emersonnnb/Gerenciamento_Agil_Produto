@@ -1,5 +1,5 @@
 <div class="login centralizar">
-  <form [formGroup]="logiIn" class="">
+  <form [formGroup]="form" class="">
     <div class="centralizar">
       <span class="material-symbols-outlined">
         person
@@ -16,15 +16,14 @@
     <div>
       <mat-form-field class="w-100" appearance="fill">
         <mat-label>Insira sua senha</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+        <button mat-icon-button matSuffix (click)="hide = !hide" >
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
     </div>
     <div class="">
-      <button class="w-100" mat-raised-button color="primary" [routerLink]="'/dashboard'">Entrar</button>
+      <button class="w-100" mat-raised-button color="primary" (click)="logar()">Entrar</button>
     </div>
   </form>
 </div>
