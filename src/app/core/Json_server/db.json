@@ -146,7 +146,7 @@
   "usuarios": [
     {
       "id": 1,
-      "login": "admin",
+      "login": "admin@admin.com",
       "senha": 123456
     }
     

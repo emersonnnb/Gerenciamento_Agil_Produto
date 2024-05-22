@@ -21,7 +21,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
 
   form!: FormGroup;
-  hide = false;
+  hide = true;
 
   constructor(    
     private fb: FormBuilder,
