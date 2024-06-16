@@ -1,6 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
 import { ProdutoService } from '../services/produto.service';
@@ -11,18 +20,29 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-edit-produto',
   templateUrl: './add-edit-produto.component.html',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatIconModule, ReactiveFormsModule, MatTabsModule, MatRadioModule, MatSelectModule, CurrencyMaskModule, MatButtonModule],
-  styleUrls: ['./add-edit-produto.component.scss']
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatSelectModule,
+    CurrencyMaskModule,
+    MatButtonModule,
+  ],
+  styleUrls: ['./add-edit-produto.component.scss'],
 })
 export class AddEditProdutoComponent implements OnInit {
-
   formProduto!: FormGroup;
   typeForm!: string;
   formModeEnum = FormModeEnum;
@@ -33,42 +53,28 @@ export class AddEditProdutoComponent implements OnInit {
   unitOfMeasurement: any = [];
   categoryDomain: any = [];
   grupoDomain: any = [];
-  subGrupoDomain: any = []
+  subGrupoDomain: any = [];
 
   categoryList: any = [];
   grupoList: any = [];
   subGrupoList: any = [];
 
+  imageSrc: string | ArrayBuffer | null = null;
+
   constructor(
     public dialogRef: MatDialogRef<AddEditProdutoComponent>,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private produtoService: ProdutoService,
-
-  ) { }
+    private produtoService: ProdutoService
+  ) {}
 
   ngOnInit(): void {
-
     this.mode = this.data.mode;
     this.id = this.data.id;
     this.data = this.data.data;
     this.getProdutoId();
     this.getCategoryGrupoSubgrupo();
-
-    this.formProduto = this.fb.group({
-      id: [null],
-      descricaoResumida: [null],
-      descricaoCompleta: [null],
-      category: [null],
-      group: [null],
-      subGroup: [null],
-      situation: [null],
-      salePrice: [null],
-      costPrice: [null],
-      margin: [null],
-      unitOfMeasurement: [null],
-      eanCode: [null]
-    });
+    this.buildForm();
 
     switch (this.mode) {
       case this.formModeEnum.Incluir:
@@ -78,13 +84,6 @@ export class AddEditProdutoComponent implements OnInit {
 
       case this.formModeEnum.Visualizar:
         this.formProduto.disable();
-        //this.formProduto.controls.situation?.disable();
-        //this.fillForm(this.data);
-        break;
-
-      case this.formModeEnum.Editar:
-        //this.formProduto.enable();
-        //this.fillForm(this.data);
         break;
 
       default:
@@ -92,9 +91,44 @@ export class AddEditProdutoComponent implements OnInit {
     }
   }
 
+  buildForm() {
+    this.formProduto = this.fb.group({
+      id: [null],
+      codProduto: [null, Validators.maxLength(15)],
+      descricaoResumida: [null, Validators.maxLength(20)],
+      descricaoCompleta: [null, Validators.maxLength(40)],
+      categoria: [null],
+      grupo: [null],
+      subGrupo: [null],
+      situacao: [null],
+      precoVenda: [null],
+      precoCusto: [null],
+      marginVenda: [null],
+      unidadeMedida: [null],
+      eanCode: [null],
+      estoqueMinimo: [null],
+      estoqueMaximo: [null],
+      permitirDesconto: [null],
+      descontoMaximo: [null],
+    });
+  }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageSrc = e.target.result; // Atualiza a fonte da imagem
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   private getProdutoId(): void {
-    this.produtoService.getIdProduto(this.id)
-      .pipe().subscribe({
+    this.produtoService
+      .getIdProduto(this.id)
+      .pipe()
+      .subscribe({
         next: (response: ProdutoModel | any) => {
           this.formProduto.patchValue(response);
           if (this.mode === this.formModeEnum.Visualizar) {
@@ -102,11 +136,11 @@ export class AddEditProdutoComponent implements OnInit {
           }
         },
         error: (error) => {
-          console.log(error)
+          console.log(error);
           // this.dialogService.alert(error.error?.message || "Sistema indisponível no momento.")
           // this.resetValuesAddress();
-        }
-      })
+        },
+      });
   }
 
   editProduto() {
@@ -114,9 +148,7 @@ export class AddEditProdutoComponent implements OnInit {
     this.formProduto.enable();
   }
 
-
   addProduto() {
-
     const formvalues = this.formProduto.getRawValue() as ProdutoModel;
 
     // if (values.descricaoResumida !== null) {
@@ -142,7 +174,7 @@ export class AddEditProdutoComponent implements OnInit {
         //this.dialogService.alert(error.error?.message);
       },
     });
-  };
+  }
 
   getCategoryGrupoSubgrupo(): void {
     this.produtoService.getAllCategoria().subscribe((data) => {
@@ -158,11 +190,9 @@ export class AddEditProdutoComponent implements OnInit {
       this.subGrupoDomain = data;
       this.subGrupoList = this.subGrupoDomain.slice();
     });
-
-  };
+  }
 
   exit(): void {
     this.dialogRef.close();
-  };
-
+  }
 }

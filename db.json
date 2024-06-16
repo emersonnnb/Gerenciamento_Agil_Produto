@@ -2,115 +2,22 @@
   "produtos": [
     {
       "id": 1,
-      "descricaoResumida": "Mamão",
-      "descricaoCompleta": "Mamão Papaia",
-      "category": 1,
-      "group": 1,
-      "subGroup": "",
-      "situation": "true",
-      "salePrice": 2.5,
-      "costPrice": 1.99,
-      "margin": 15,
-      "unitOfMeasurement": "UN",
-      "eanCode": 789456123
-    },
-    {
-      "id": 2,
-      "descricaoResumida": "Coca 2lt",
-      "descricaoCompleta": "Coca cola 2 litros",
-      "category": 2,
-      "group": 2,
-      "subGroup": 1,
-      "situation": "false",
-      "salePrice": 4.5,
-      "costPrice": 2.99,
-      "margin": 25,
-      "unitOfMeasurement": "kg",
-      "eanCode": 789321654
-    },
-    {
-      "id": 3,
-      "descricaoResumida": null,
-      "descricaoCompleta": null,
-      "category": null,
-      "group": null,
-      "subGroup": null,
-      "situation": null,
-      "salePrice": null,
-      "costPrice": null,
-      "margin": null,
-      "unitOfMeasurement": null,
-      "eanCode": null
-    },
-    {
-      "id": 4,
-      "descricaoResumida": null,
-      "descricaoCompleta": null,
-      "category": null,
-      "group": null,
-      "subGroup": null,
-      "situation": null,
-      "salePrice": null,
-      "costPrice": null,
-      "margin": null,
-      "unitOfMeasurement": null,
-      "eanCode": null
-    },
-    {
-      "id": 5,
-      "descricaoResumida": null,
-      "descricaoCompleta": null,
-      "category": null,
-      "group": null,
-      "subGroup": null,
-      "situation": null,
-      "salePrice": null,
-      "costPrice": null,
-      "margin": null,
-      "unitOfMeasurement": null,
-      "eanCode": null
-    },
-    {
-      "id": 6,
-      "descricaoResumida": null,
-      "descricaoCompleta": null,
-      "category": null,
-      "group": null,
-      "subGroup": null,
-      "situation": null,
-      "salePrice": null,
-      "costPrice": null,
-      "margin": null,
-      "unitOfMeasurement": null,
-      "eanCode": null
-    },
-    {
-      "id": 7,
-      "descricaoResumida": null,
-      "descricaoCompleta": null,
-      "category": null,
-      "group": null,
-      "subGroup": null,
-      "situation": null,
-      "salePrice": null,
-      "costPrice": null,
-      "margin": null,
-      "unitOfMeasurement": null,
-      "eanCode": null
-    },
-    {
-      "id": 8,
-      "descricaoResumida": null,
-      "descricaoCompleta": null,
-      "category": null,
-      "group": null,
-      "subGroup": null,
-      "situation": null,
-      "salePrice": null,
-      "costPrice": null,
-      "margin": null,
-      "unitOfMeasurement": null,
-      "eanCode": null
+      "codProduto": null,
+      "descricaoResumida": "Coca cola 2 lts",
+      "descricaoCompleta": "Coca cola 2 lts",
+      "categoria": 2,
+      "grupo": 2,
+      "subGrupo": "1i",
+      "situacao": "true",
+      "precoVenda": 9,
+      "precoCusto": 4.5,
+      "marginVenda": 100,
+      "unidadeMedida": null,
+      "eanCode": 789454654654,
+      "estoqueMinimo": 10,
+      "estoqueMaximo": 20,
+      "permitirDesconto": "true",
+      "descontoMaximo": 10
     }
   ],
   "categorias": [
@@ -149,6 +56,5 @@
       "login": "admin",
       "senha": 123456
     }
-    
   ]
 }

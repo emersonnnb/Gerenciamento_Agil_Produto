@@ -41,9 +41,9 @@ export class ListProdutoComponent {
   public displayedColumns: string[] = [
     "id",
     "name",
-    "category",
-    "situation",
-    "salePrice",
+    "categoria",
+    "situacao",
+    "precoVenda",
     "actions"
   ];
 
@@ -121,7 +121,7 @@ export class ListProdutoComponent {
   openDialogProduto(id: number | null, mode: string) {
     return this.dialog.open(AddEditProdutoComponent, {
       minWidth: "90%",
-      height: "90vh",
+      height: "70vh",
       data: { id, mode }
     }).afterClosed().subscribe(() => {
       this.getProduto(this.pageEvent)

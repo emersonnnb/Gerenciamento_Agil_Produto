@@ -1,5 +1,4 @@
-<section>
-  <mat-dialog-content class="mat-typography">
+<section>  
     <form [formGroup]="formProduto">
       <div class="m-4">
         <div class="row d-flex justify-content-between">
@@ -38,23 +37,25 @@
               <div class="row my-4">
                 <div class="row">
 
-                  <div class="col-2">
-                    <div class="img-func">
-                      <!-- <img alt="Imagem Produto" /> -->
-                      <div class="icon-avatar">
-                        <mat-icon>person_outline</mat-icon>
+                  <div class="col-12 col-md-2 mb-sm-3">
+                    <div class="img-func" (click)="fileInput.click()">                    
+                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)" accept="image/*">
+                      <div class="icon-avatar">                    
+                        <img *ngIf="imageSrc" #imagePreview [src]="imageSrc" alt="Imagem Produto">                        
+                        <mat-icon *ngIf="!imageSrc">person_outline</mat-icon>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-10">
-                    <div class="row w-100">
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
-                        <mat-label>id</mat-label>
-                        <input type="number" matInput formControlName="id" readonly="">
+                  <div class="col-12 col-md-10">
+                    <div class="row w-100"> 
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-2">
+                        <mat-label>Cód. produto</mat-label>
+                        <input matInput formControlName="codProduto" >
                       </mat-form-field>
 
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-4">
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4">
                         <mat-label>Descrição resumida</mat-label>
                         <input matInput formControlName="descricaoResumida" />
                       </mat-form-field>
@@ -68,7 +69,7 @@
                     <div class="row w-100">
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="category" name="category" placeholder=" Selecionar">
+                        <mat-select formControlName="categoria" name="category" placeholder=" Selecionar">
                           <mat-option *ngFor="let item of categoryList" [value]="item.id">
                             {{ item.description }}
                           </mat-option>
@@ -77,7 +78,7 @@
 
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Grupo</mat-label>
-                        <mat-select placeholder="Selecionar" formControlName="group">
+                        <mat-select placeholder="Selecionar" formControlName="grupo">
                           <mat-option *ngFor="let item of grupoList" [value]="item.id">
                             {{ item.description }}
                           </mat-option>
@@ -86,7 +87,7 @@
 
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Sub grupo</mat-label>
-                        <mat-select placeholder="Selecione" formControlName="subGroup">
+                        <mat-select placeholder="Selecione" formControlName="subGrupo">
                           <mat-option *ngFor="let item of subGrupoList" [value]="item.id">
                             {{ item.description }}
                           </mat-option>
@@ -100,15 +101,15 @@
 
                       <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
                         <mat-label>Unidade medida</mat-label>
-                        <mat-select placeholder="Selecione" formControlName="subGroup">
+                        <mat-select placeholder="Selecione" formControlName="subGrupo">
                           <mat-option value="1i">UNIDADE</mat-option>
                           <mat-option value="2">KG</mat-option>
                           <mat-option value="3">SACO</mat-option>
-
                         </mat-select>
                       </mat-form-field>
+
                       <mat-radio-group class="col-sm-12 col-md-2" appearance="outline" floatLabel="always"
-                        formControlName="situation">
+                        formControlName="situacao">
                         <mat-label class="d-block">Situação:</mat-label>
                         <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
                         <mat-radio-button value="false">Inativo</mat-radio-button>
@@ -116,30 +117,47 @@
                     </div>
 
                     <div class="row">
-
                       <mat-form-field class="col-md-2 col-sm-12" appearance="outline" floatLabel="always">
                         <mat-label>Preço de custo</mat-label>
                         <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
-                          placeholder="R$ 999.999,99" matInput formControlName="costPrice" required>
+                          placeholder="R$ 999.999,99" matInput formControlName="precoCusto" required>
                       </mat-form-field>
 
                       <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
                         <mat-label>Margem</mat-label>
-                        <input type="number" matInput formControlName="margin">
+                        <input type="number" matInput formControlName="marginVenda">
                       </mat-form-field>
 
                       <mat-form-field class="col-md-2 col-sm-12" appearance="outline" floatLabel="always">
                         <mat-label>Preço de venda</mat-label>
                         <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
-                          placeholder="R$ 999.999,99" matInput formControlName="salePrice" required>
+                          placeholder="R$ 999.999,99" matInput formControlName="precoVenda" required>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-2">
+                        <mat-label>Estoque mínimo</mat-label>
+                        <input type="number" matInput formControlName="estoqueMinimo">
                       </mat-form-field>
 
                       <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
-                        <mat-label>Estoque</mat-label>
-                        <input type="number" matInput formControlName="margin">
+                        <mat-label>Estoque máximo</mat-label>
+                        <input type="number" matInput formControlName="estoqueMaximo">
                       </mat-form-field>
-
                     </div>
+
+                    <div class="row">
+                      <mat-radio-group class="col-sm-12 col-md-2" appearance="outline" floatLabel="always" formControlName="permitirDesconto">
+                        <mat-label class="d-block">Permite desconto:</mat-label>
+                        <mat-radio-button value="true" checked="">Sim</mat-radio-button>
+                        <mat-radio-button value="false">Não</mat-radio-button>
+                      </mat-radio-group>
+
+                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
+                        <mat-label>Desconto máximo</mat-label>
+                        <input type="number" matInput formControlName="descontoMaximo">
+                      </mat-form-field>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -150,6 +168,5 @@
           </div>
         </div>
       </div>
-    </form>
-  </mat-dialog-content>
+    </form>  
 </section>
