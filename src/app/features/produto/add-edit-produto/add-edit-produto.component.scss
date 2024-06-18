@@ -4,8 +4,8 @@
 
 .img-func {
   border: 1px solid #646464;
-  width: 123px;
-  height: 133px;
+  max-width: 123px;
+  height: 113px;
   border-radius: 4px;
   padding: 0;
   cursor: pointer;
@@ -23,6 +23,7 @@
   text-align: center;
   top: calc(50% - 10px);
 }
+
 ::ng-deep.mat-tab-label.mat-focus-indicator,
 ::ng-deep.mat-tab-disabled .ng-star-inserted {
   padding: 0 !important;
@@ -38,7 +39,7 @@
 
 .button-exit {
   position: absolute;
-  top: 12px;
+  top: 7px;
   right: 0px;
   border-radius: 0;
   z-index: 1;
@@ -48,7 +49,7 @@
 }
 
 .close-back-container .button-exit {
-  border-bottom: 2px solid;
+  border-bottom: 3px solid;
   border-color: #e33e38;
   border-radius: 0 !important;
   padding: 0;
@@ -71,35 +72,18 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .mdc-text-field--disabled,
-.mat-form-field-type-mat-native-select.mat-form-field-disabled
-  .mat-form-field-infix:after {
+.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix:after {
   color: #363636;
 }
 
-.mat-form-field:not(.mat-focused):not(
-    .mat-form-field-invalid
-  ).mat-form-field-appearance-outline:hover
-  .mat-form-field-outline {
+.mat-form-field:not(.mat-focused):not(.mat-form-field-invalid).mat-form-field-appearance-outline:hover .mat-form-field-outline {
   color: #363636;
 }
-
-// ::ng-deep .mdc-text-field--disabled {
-//   //color: #363636;
-//   color: red;
-// }
 
 .mdc-text-field--disabled {
   color: #e33e38 !important;
 }
 
-.button_save {
-  color: white !important;
-  width: 284px;
-  height: 48px;
-  background: linear-gradient(
-    90deg,
-    rgb(0, 0, 0) 0%,
-    rgb(54, 54, 54) 50.42%,
-    rgb(0, 0, 0) 100%
-  );
+::ng-deep .mdc-tab-indicator__content--underline {
+  border-top-width: unset !important;
 }

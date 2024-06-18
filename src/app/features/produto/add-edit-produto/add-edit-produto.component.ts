@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -5,23 +6,22 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
-import { ProdutoModel } from 'src/app/core/model/produto.model';
-import { ProdutoService } from '../services/produto.service';
-import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { MatButtonModule } from '@angular/material/button';
+import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
+import { ProdutoModel } from 'src/app/core/model/produto.model';
+import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-add-edit-produto',
@@ -65,7 +65,7 @@ export class AddEditProdutoComponent implements OnInit {
     public dialogRef: MatDialogRef<AddEditProdutoComponent>,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
   ) {}
 
   ngOnInit(): void {

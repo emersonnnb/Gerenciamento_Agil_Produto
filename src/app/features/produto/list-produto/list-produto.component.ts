@@ -1,50 +1,63 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormModeEnum } from 'src/app/core/Enum/form-mod.enum';
 import { ProdutoModel } from 'src/app/core/model/produto.model';
 import { AddEditProdutoComponent } from '../add-edit-produto/add-edit-produto.component';
 import { ProdutoService } from '../services/produto.service';
-import { CommonModule } from '@angular/common';
 
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import {MatIconModule} from '@angular/material/icon';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
-
 
 @Component({
   selector: 'app-list-produto',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatIconModule, MatSlideToggleModule, MatTooltipModule, HttpClientModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule,MatButtonModule, MatSelectModule],
+  imports: [
+    MatTableModule,
+    CommonModule,
+    MatIconModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+  ],
   templateUrl: './list-produto.component.html',
-  styleUrl: './list-produto.component.scss',  
-
+  styleUrl: './list-produto.component.scss',
 })
 export class ListProdutoComponent {
-
   public menuIndex: number | undefined = undefined;
   public labelAcaoAtualtemListaMenu: string = '';
 
   form!: FormGroup;
 
-
-  dataSourceProduto!: MatTableDataSource<ProdutoModel>
+  dataSourceProduto!: MatTableDataSource<ProdutoModel>;
 
   public displayedColumns: string[] = [
-    "id",
-    "name",
-    "categoria",
-    "situacao",
-    "precoVenda",
-    "actions"
+    'id',
+    'name',
+    'categoria',
+    'situacao',
+    'precoVenda',
+    'actions',
   ];
 
   searchByOptions: string[] = ['Código', 'Descrição', 'Categoria'];
@@ -69,7 +82,7 @@ export class ListProdutoComponent {
     private api: ProdutoService,
     public dialog: MatDialog,
     private fb: FormBuilder,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.bulidForm();
@@ -77,19 +90,19 @@ export class ListProdutoComponent {
   }
 
   bulidForm() {
-    this.form = this.fb.group({      
+    this.form = this.fb.group({
       searchBy: [null, Validators.required],
-      searchType: [null, Validators.required]      
+      searchType: [null, Validators.required],
     });
   }
 
-  onSearchByChange() {  
-      this.form.get('searchType')?.reset();  
+  onSearchByChange() {
+    this.form.get('searchType')?.reset();
   }
 
   getProduto(event: PageEvent) {
     this.pageEvent = event;
-    let params = new HttpParams()
+    let params = new HttpParams();
     this.api.getAllProduto(params).subscribe({
       next: (res): void => {
         this.pageEvent.length = res.totalRecords;
@@ -98,9 +111,9 @@ export class ListProdutoComponent {
       },
       error: (error) => {
         //this.dialogService.alert(error.error?.message);
-      }
+      },
     });
-  };
+  }
 
   deleteProduto(produtoId: number) {
     this.api.deleteProduto(produtoId).subscribe({
@@ -109,27 +122,29 @@ export class ListProdutoComponent {
       },
       error: (error) => {
         // this.dialogService.alert(error.error?.message || "Sistema indisponível no momento.")
-      }
-    })
-  };
+      },
+    });
+  }
 
   clearSearchType() {
     this.form.get('searchType')?.setValue('');
   }
 
-
   openDialogProduto(id: number | null, mode: string) {
-    return this.dialog.open(AddEditProdutoComponent, {
-      minWidth: "90%",
-      height: "70vh",
-      data: { id, mode }
-    }).afterClosed().subscribe(() => {
-      this.getProduto(this.pageEvent)
-    })
-  };
+    return this.dialog
+      .open(AddEditProdutoComponent, {
+        minWidth: '90%',
+        height: '80vh',
+        data: { id, mode },
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.getProduto(this.pageEvent);
+      });
+  }
 
   situationTextMap: Map<string, string> = new Map([
-    ["false", "Inativo"],
-    ["true", "Ativo"],
+    ['false', 'Inativo'],
+    ['true', 'Ativo'],
   ]);
 }

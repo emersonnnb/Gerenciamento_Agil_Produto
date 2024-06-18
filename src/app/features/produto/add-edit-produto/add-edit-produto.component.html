@@ -1,172 +1,178 @@
-<section>  
-    <form [formGroup]="formProduto">
-      <div class="m-4">
-        <div class="row d-flex justify-content-between">
-          <div class="col-auto h3-bold">
-            <ng-container [ngSwitch]="mode">
-              <ng-container *ngSwitchCase="'Visualizar'">
-                Visualizar
-              </ng-container>
-              <ng-container *ngSwitchCase="'Editar'">
-                Editar
-              </ng-container>
-              <ng-container *ngSwitchCase="'Incluir'">
-                Cadastrar
-              </ng-container>
+<section>
+  <form [formGroup]="formProduto">
+    <div class="mt-5 ms-4 me-4">
+      <div class="row d-flex justify-content-between">
+
+        <div class="col-10 h3-bold">
+          <ng-container [ngSwitch]="mode">
+            <ng-container *ngSwitchCase="'Visualizar'">
+              Visualizar
             </ng-container>
-            produto
-          </div>
-
-          <!-- <h1 class="fw-bold col-sm-6 col-md-10">Incluir artefato</h1> -->
-          <button class="button_save col-sm-6 col-md-2 bg-dark" mat-flat-button
-            *ngIf=" mode !== formModeEnum.Visualizar" (click)="addProduto()">
-            <mat-icon style="font-size: 18px">save</mat-icon>
-            Salvar
-          </button>
-
-          <button class="button_save col-sm-6 col-md-2 bg-dark" mat-flat-button
-            *ngIf=" mode === formModeEnum.Visualizar">
-            <mat-icon style="font-size: 18px">edit</mat-icon>
-            Editar
-          </button>
+            <ng-container *ngSwitchCase="'Editar'">
+              Editar
+            </ng-container>
+            <ng-container *ngSwitchCase="'Incluir'">
+              Cadastrar
+            </ng-container>
+          </ng-container>
+          produto
         </div>
 
-        <div class="position-relative ">
-          <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight>
-            <mat-tab label="Identificação">
-              <div class="row my-4">
-                <div class="row">
+        <button class="button_save col-2 bg-dark  " mat-flat-button *ngIf=" mode !== formModeEnum.Visualizar"
+          (click)="addProduto()">
+          <mat-icon style="font-size: 18px">save</mat-icon>
+          Salvar
+        </button>
 
-                  <div class="col-12 col-md-2 mb-sm-3">
-                    <div class="img-func" (click)="fileInput.click()">                    
-                      <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)" accept="image/*">
-                      <div class="icon-avatar">                    
-                        <img *ngIf="imageSrc" #imagePreview [src]="imageSrc" alt="Imagem Produto">                        
-                        <mat-icon *ngIf="!imageSrc">person_outline</mat-icon>
-                      </div>
-                    </div>
+        <button class="button_save col-2 bg-dark" mat-flat-button *ngIf=" mode === formModeEnum.Visualizar">
+          <mat-icon style="font-size: 18px">edit</mat-icon>
+          Editar
+        </button>
+      </div>
+
+      <div class="position-relative">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight>
+          <mat-tab label="Identificação">
+            <div class="row my-4">
+              <div class="row pe-0">
+                <div class="col-12 col-md-10">
+
+                  <div class="row pe-0">
+                    <mat-form-field class="col-12 col-md-4" appearance="outline" floatLabel="always">
+                      <mat-label>Cód. produto</mat-label>
+                      <input matInput formControlName="codProduto">
+                    </mat-form-field>
+
+                    <mat-radio-group class="col-12 col-md-6" formControlName="situacao">
+                      <mat-label>Situação:</mat-label>
+                      <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
+                      <mat-radio-button value="false">Inativo</mat-radio-button>
+                    </mat-radio-group>
                   </div>
 
-                  <div class="col-12 col-md-10">
-                    <div class="row w-100"> 
+                  <div class="row pe-0">
+                    <mat-form-field class="col-12 col-md-8" appearance="outline" floatLabel="always">
+                      <mat-label>Descrição completa</mat-label>
+                      <input matInput formControlName="descricaoCompleta" />
+                    </mat-form-field>
 
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-2">
-                        <mat-label>Cód. produto</mat-label>
-                        <input matInput formControlName="codProduto" >
-                      </mat-form-field>
+                    <mat-form-field class="col-12 col-md-4" appearance="outline" floatLabel="always">
+                      <mat-label>Descrição resumida</mat-label>
+                      <input matInput formControlName="descricaoResumida" />
+                    </mat-form-field>
+                  </div>
+                </div>
 
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4">
-                        <mat-label>Descrição resumida</mat-label>
-                        <input matInput formControlName="descricaoResumida" />
-                      </mat-form-field>
-
-                      <mat-form-field class="col-sm-12 col-md-6" appearance="outline" floatLabel="always">
-                        <mat-label>Descrição completa</mat-label>
-                        <input matInput formControlName="descricaoCompleta" />
-                      </mat-form-field>
+                <div class="d-none d-md-block col-2 pe-0">
+                  <div class="d-none d-md-block img-func" (click)="fileInput.click()">
+                    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)"
+                      accept="image/*">
+                    <div class="icon-avatar">
+                      <img *ngIf="imageSrc" #imagePreview [src]="imageSrc" alt="Imagem Produto">
+                      <mat-icon *ngIf="!imageSrc">person_outline</mat-icon>
                     </div>
-
-                    <div class="row w-100">
-                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
-                        <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="categoria" name="category" placeholder=" Selecionar">
-                          <mat-option *ngFor="let item of categoryList" [value]="item.id">
-                            {{ item.description }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
-                        <mat-label>Grupo</mat-label>
-                        <mat-select placeholder="Selecionar" formControlName="grupo">
-                          <mat-option *ngFor="let item of grupoList" [value]="item.id">
-                            {{ item.description }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
-                        <mat-label>Sub grupo</mat-label>
-                        <mat-select placeholder="Selecione" formControlName="subGrupo">
-                          <mat-option *ngFor="let item of subGrupoList" [value]="item.id">
-                            {{ item.description }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
-                        <mat-label>Código EAN</mat-label>
-                        <input type="number" matInput formControlName="eanCode">
-                      </mat-form-field>
-
-                      <mat-form-field class="col-sm-12 col-md-2" appearance="outline" floatLabel="always">
-                        <mat-label>Unidade medida</mat-label>
-                        <mat-select placeholder="Selecione" formControlName="subGrupo">
-                          <mat-option value="1i">UNIDADE</mat-option>
-                          <mat-option value="2">KG</mat-option>
-                          <mat-option value="3">SACO</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-radio-group class="col-sm-12 col-md-2" appearance="outline" floatLabel="always"
-                        formControlName="situacao">
-                        <mat-label class="d-block">Situação:</mat-label>
-                        <mat-radio-button value="true" checked="">Ativo</mat-radio-button>
-                        <mat-radio-button value="false">Inativo</mat-radio-button>
-                      </mat-radio-group>
-                    </div>
-
-                    <div class="row">
-                      <mat-form-field class="col-md-2 col-sm-12" appearance="outline" floatLabel="always">
-                        <mat-label>Preço de custo</mat-label>
-                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
-                          placeholder="R$ 999.999,99" matInput formControlName="precoCusto" required>
-                      </mat-form-field>
-
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
-                        <mat-label>Margem</mat-label>
-                        <input type="number" matInput formControlName="marginVenda">
-                      </mat-form-field>
-
-                      <mat-form-field class="col-md-2 col-sm-12" appearance="outline" floatLabel="always">
-                        <mat-label>Preço de venda</mat-label>
-                        <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
-                          placeholder="R$ 999.999,99" matInput formControlName="precoVenda" required>
-                      </mat-form-field>
-
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-2">
-                        <mat-label>Estoque mínimo</mat-label>
-                        <input type="number" matInput formControlName="estoqueMinimo">
-                      </mat-form-field>
-
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
-                        <mat-label>Estoque máximo</mat-label>
-                        <input type="number" matInput formControlName="estoqueMaximo">
-                      </mat-form-field>
-                    </div>
-
-                    <div class="row">
-                      <mat-radio-group class="col-sm-12 col-md-2" appearance="outline" floatLabel="always" formControlName="permitirDesconto">
-                        <mat-label class="d-block">Permite desconto:</mat-label>
-                        <mat-radio-button value="true" checked="">Sim</mat-radio-button>
-                        <mat-radio-button value="false">Não</mat-radio-button>
-                      </mat-radio-group>
-
-                      <mat-form-field appearance="outline" floatLabel="always" class="col-sm-12 col-md-2">
-                        <mat-label>Desconto máximo</mat-label>
-                        <input type="number" matInput formControlName="descontoMaximo">
-                      </mat-form-field>
-                    </div>
-
                   </div>
                 </div>
               </div>
-            </mat-tab>
-          </mat-tab-group>
-          <div class="close-back-container">
-            <button mat-button class="button-exit button d-none d-sm-block" (click)="exit()">Sair</button>
-          </div>
+
+              <div class="row pe-0">
+                <mat-form-field class="col-12 col-md-4" appearance="outline" floatLabel="always">
+                  <mat-label>Categoria</mat-label>
+                  <mat-select formControlName="categoria" name="category" placeholder=" Selecionar">
+                    <mat-option *ngFor="let item of categoryList" [value]="item.id">
+                      {{ item.description }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col-12 col-md-4" appearance="outline" floatLabel="always">
+                  <mat-label>Grupo</mat-label>
+                  <mat-select placeholder="Selecionar" formControlName="grupo">
+                    <mat-option *ngFor="let item of grupoList" [value]="item.id">
+                      {{ item.description }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col-12 col-md-4 pe-0" appearance="outline" floatLabel="always">
+                  <mat-label>Sub grupo</mat-label>
+                  <mat-select placeholder="Selecione" formControlName="subGrupo">
+                    <mat-option *ngFor="let item of subGrupoList" [value]="item.id">
+                      {{ item.description }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="row pe-0">
+                <mat-form-field class="col-12 col-md-4" appearance="outline" floatLabel="always">
+                  <mat-label>Preço de custo</mat-label>
+                  <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
+                    placeholder="R$ 999" matInput formControlName="precoCusto" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4">
+                  <mat-label>Margem</mat-label>
+                  <input type="number" matInput formControlName="marginVenda">
+                </mat-form-field>
+
+                <mat-form-field class="col-12 col-md-4 pe-0" appearance="outline" floatLabel="always">
+                  <mat-label>Preço de venda</mat-label>
+                  <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
+                    placeholder="R$ 999.999,99" matInput formControlName="precoVenda" required>
+                </mat-form-field>
+              </div>
+
+              <div class="row pe-0">
+                <mat-form-field class="col-12 col-md-4" appearance="outline" floatLabel="always">
+                  <mat-label>Unidade medida</mat-label>
+                  <mat-select placeholder="Selecione" formControlName="subGrupo">
+                    <mat-option value="1">UNIDADE</mat-option>
+                    <mat-option value="2">KG</mat-option>
+                    <mat-option value="3">SACO</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4">
+                  <mat-label>Estoque mínimo</mat-label>
+                  <input type="number" matInput formControlName="estoqueMinimo">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4 pe-0">
+                  <mat-label>Estoque máximo</mat-label>
+                  <input type="number" matInput formControlName="estoqueMaximo">
+                </mat-form-field>
+              </div>
+
+              <div class="row">
+
+              </div>
+
+              <div class="row">
+                <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4">
+                  <mat-label>Desconto máximo</mat-label>
+                  <input type="number" matInput formControlName="descontoMaximo">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" floatLabel="always" class="col-12 col-md-4">
+                  <mat-label>Código EAN</mat-label>
+                  <input type="number" matInput formControlName="eanCode">
+                </mat-form-field>
+
+                <mat-radio-group class="col-12 col-md-4" appearance="outline" floatLabel="always"
+                  formControlName="permitirDesconto">
+                  <mat-label class="d-block">Permite desconto:</mat-label>
+                  <mat-radio-button value="true" checked="">Sim</mat-radio-button>
+                  <mat-radio-button value="false">Não</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <div class="close-back-container">
+          <button mat-button class="button-exit button" (click)="exit()">Sair</button>
         </div>
       </div>
-    </form>  
+    </div>
+  </form>
 </section>

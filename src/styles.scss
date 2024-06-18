@@ -44,6 +44,7 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 .tab-row-menu {
   position: absolute;
   display: flex;
@@ -107,14 +108,11 @@ button {
 
 .button_save {
   color: white !important;
-  width: 284px;
   height: 48px;
-  background: linear-gradient(
-    90deg,
-    rgb(0, 0, 0) 0%,
-    rgb(54, 54, 54) 50.42%,
-    rgb(0, 0, 0) 100%
-  );
+  background: linear-gradient(90deg,
+      rgb(0, 0, 0) 0%,
+      rgb(54, 54, 54) 50.42%,
+      rgb(0, 0, 0) 100%);
 }
 
 //Ajuste no tamanho dos inputs do form field
@@ -122,6 +120,7 @@ button {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
 }
+
 .mat-mdc-form-field-infix {
   min-height: 13px !important;
 }

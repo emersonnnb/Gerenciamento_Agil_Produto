@@ -7,15 +7,19 @@ table {
 .mat-column-id {
   width: max-content;
 }
+
 .mat-column-name {
   width: max-content;
 }
+
 .mat-column-category {
   width: max-content;
 }
+
 .mat-column-situation {
   width: max-content;
 }
+
 .mat-column-price {
   width: max-content;
 }
@@ -62,4 +66,8 @@ th.mat-header-cell {
 
 .mdc-data-table__cell {
   overflow: unset !important;
+}
+
+::ng-deep .mdc-tab-indicator__content--underline {
+  border-top-width: unset !important;
 }
